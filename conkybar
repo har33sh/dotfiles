@@ -38,20 +38,20 @@ TEXT
 
 # JSON for i3bar
 [
-#    {
-#        "full_text" : " ${fs_used_perc /}%",
-#        "color"     : ${if_match ${fs_used_perc /}>90}"\#ff0000"${else}"\#88ABC4"${endif}
-#    },
-#    {
-#        "full_text" : "${acpitemp}°C",
-#        "color"     : ${if_match ${acpitemp}>55}"\#ff0000"${else}"\#88ABC4"${endif}
-#    },
     {
-        "full_text" : "${exec xprop -id $(xprop  -root _NET_ACTIVE_WINDOW | sed -un 's/.*\(0x.*\)/\1/p') | awk '/_NET_WM_NAME/{$1=$2="";print}'| sed 's/["?/\]//g' }",
-        "color"     : "\#17cf8b"
+        "full_text" : " ${fs_used_perc /}%",
+        "color"     : ${if_match ${fs_used_perc /}>90}"\#ff0000"${else}"\#A54242"${endif}
     },
     {
-        "full_text" : ${if_up wlan0}"\uF1EB ${wireless_essid wlan0} (${addr wlan0})"${else}"\uF287 (${addr eth0})"${endif},
+        "full_text" : "${acpitemp}°C",
+        "color"     : ${if_match ${acpitemp}>55}"\#ff0000"${else}"\#8x9440"${endif}
+    },
+#    {
+#        "full_text" : "${exec xprop -id $(xprop  -root _NET_ACTIVE_WINDOW | sed -un 's/.*\(0x.*\)/\1/p') | awk '/_NET_WM_NAME/{$1=$2="";print}'| sed 's/["?/\]//g' }",
+#        "color"     : "\#17cf8b"
+#    },
+    {
+        "full_text" : ${if_up wlan0}"\uF1EB ${wireless_essid wlan0} (${addr wlan0})"${else}"\uF287 (${addr eno1})"${endif},
         "color"     : "\#88ABC4"
     },
     {
@@ -59,11 +59,11 @@ TEXT
         "color"     : "\#119966"
     },
     {
-        "full_text" : "\uF0ED ${if_up wlan0}${downspeed wlan0}${else}${downspeed eth0}${endif}/s",
+        "full_text" : "\uF0ED ${if_up wlan0}${downspeed wlan0}${else}${downspeed eno1}${endif}/s",
         "color"     : "\#00A0A0"
     },
     {
-        "full_text" : "\uF0EE ${if_up wlan0}${upspeed wlan0}${else}${upspeed eth0}${endif}/s",
+        "full_text" : "\uF0EE ${if_up wlan0}${upspeed wlan0}${else}${upspeed eno1}${endif}/s",
         "color"     : "\#00A0A0"
     },
 #    {
@@ -86,12 +86,12 @@ TEXT
         "full_text" : "\uF0A1 ${exec ~/.i3/bin/conky-audio}%",
         "color"     : ${if_match ${exec ~/.i3/bin/conky-audio}>95}"\#DD0000"${else}"\#88ABC4"${endif}
     },
+#    {
+#        "full_text" : "${if_match ${exec ~/.i3/bin/battery }>0}\uF0E4${else}\uF1E6${endif} ${battery_percent}%",
+#        "color"     : ${if_match ${battery_percent}<15}"\#ff0000"${else}"\#88ABC4"${endif}
+#    },
     {
-        "full_text" : "${if_match ${exec ~/.i3/bin/battery }>0}\uF0E4${else}\uF1E6${endif} ${battery_percent}%",
-        "color"     : ${if_match ${battery_percent}<15}"\#ff0000"${else}"\#88ABC4"${endif}
-    },
-    {
-        "full_text" : "\uF073 ${time %A %d %b} \uF188 ${time %R}",
+        "full_text" : "\uF073 ${time %A %d %b} \uF188 ${time %T}",
         "color"     : "\#119966"
     }
 ],
