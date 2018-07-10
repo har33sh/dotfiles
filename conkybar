@@ -51,7 +51,7 @@ TEXT
 #        "color"     : "\#17cf8b"
 #    },
     {
-        "full_text" : ${if_up wlan0}"\uF1EB ${wireless_essid wlan0} (${addr wlan0})"${else}"\uF287 (${addr eno1})"${endif},
+        "full_text" : ${if_up wlp2s0}"\uF1EB ${wireless_essid wlp2s0} (${addr wlp2s0})"${else}"\uF287 (${addr eno1})"${endif},
         "color"     : "\#88ABC4"
     },
     {
@@ -59,11 +59,11 @@ TEXT
         "color"     : "\#119966"
     },
     {
-        "full_text" : "\uF0ED ${if_up wlan0}${downspeed wlan0}${else}${downspeed eno1}${endif}/s",
+        "full_text" : "\uF0ED ${if_up wlp2s0}${downspeed wlp2s0}${else}${downspeed eno1}${endif}/s",
         "color"     : "\#00A0A0"
     },
     {
-        "full_text" : "\uF0EE ${if_up wlan0}${upspeed wlan0}${else}${upspeed eno1}${endif}/s",
+        "full_text" : "\uF0EE ${if_up wlp2s0}${upspeed wlp2s0}${else}${upspeed eno1}${endif}/s",
         "color"     : "\#00A0A0"
     },
 #    {
@@ -86,10 +86,10 @@ TEXT
         "full_text" : "\uF0A1 ${exec ~/.i3/bin/conky-audio}%",
         "color"     : ${if_match ${exec ~/.i3/bin/conky-audio}>95}"\#DD0000"${else}"\#88ABC4"${endif}
     },
-#    {
-#        "full_text" : "${if_match ${exec ~/.i3/bin/battery }>0}\uF0E4${else}\uF1E6${endif} ${battery_percent}%",
-#        "color"     : ${if_match ${battery_percent}<15}"\#ff0000"${else}"\#88ABC4"${endif}
-#    },
+    {
+        "full_text" : "${if_match ${exec ~/.i3/bin/battery }>0}\uF0E4${else}\uF1E6${endif} ${battery_percent}%",
+        "color"     : ${if_match ${battery_percent}<15}"\#ff0000"${else}"\#88ABC4"${endif}
+    },
     {
         "full_text" : "\uF073 ${time %A %d %b} \uF188 ${time %T}",
         "color"     : "\#119966"
